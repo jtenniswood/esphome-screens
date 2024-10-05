@@ -53,10 +53,12 @@ ha_deck:
           checked: |-
             return id(office_lenovo_power_state).state;
           on_turn_on:
-            - homeassistant.service:
-                service: switch.turn_on
-                data:
-                  entity_id: switch.office_lenovo_power_switch
+            - http_request.get:
+                url: http://192.168.10.76:9000/hooks/webhook
+#            - homeassistant.service:
+#                service: switch.turn_on
+#                data:
+#                  entity_id: switch.office_lenovo_power_switch
 
         
         # Printer Power
