@@ -2,6 +2,15 @@ substitutions:
   SCREEN_MAIN: master
   SCREEN_BLINDS: blinds
 
+# Define the HTTP request action
+http_request:
+  id: my_http_component
+  method: POST
+  url: http://192.168.10.76:9000/hooks/webhook
+  headers:
+    Content-Type: application/json
+  body: '{"event":"button_pressed"}'
+
 ha_deck:
   screens:
     - name: ${SCREEN_MAIN}
@@ -50,16 +59,15 @@ ha_deck:
           icon: 󰇅
           toggle: true
           enabled: return true;
+          on_click:
+            lambda: |-
+              id(my_http_component).make_request();
+            
+
+          
 #          checked: |-
 #            return id(office_lenovo_power_state).state;
 #          on_turn_on:
-          on_click:
-            - http_request.send:
-                method: PUT
-                url: http://192.168.10.76:9000/hooks/webhook
-                headers:
-                  Content-Type: application/json
-                body: "Some data"
 #            - homeassistant.service:
 #                service: switch.turn_on
 #                data:
