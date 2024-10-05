@@ -54,7 +54,12 @@ ha_deck:
 #            return id(office_lenovo_power_state).state;
 #          on_turn_on:
           on_click:
-            - http_request.get: http://192.168.10.76:9000/hooks/webhook
+            - http_request.send:
+                method: PUT
+                url: http://192.168.10.76:9000/hooks/webhook
+                headers:
+                  Content-Type: application/json
+                body: "Some data"
 #            - homeassistant.service:
 #                service: switch.turn_on
 #                data:
