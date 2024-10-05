@@ -52,6 +52,7 @@ ha_deck:
             sprintf(buff, "%.0f", id(office_temperature_sensor).state);
             return std::string(buff);
 
+
         # Lenovo Power
         - type: button
           position: ${box4}
@@ -62,16 +63,13 @@ ha_deck:
           on_click:
             lambda: |-
               id(my_http_component).make_request();
-            
-
-          
-#          checked: |-
-#            return id(office_lenovo_power_state).state;
-#          on_turn_on:
-#            - homeassistant.service:
-#                service: switch.turn_on
-#                data:
-#                  entity_id: switch.office_lenovo_power_switch
+          checked: |-
+            return id(office_lenovo_power_state).state;
+          on_turn_on:
+            - homeassistant.service:
+                service: switch.turn_on
+                data:
+                  entity_id: switch.office_lenovo_power_switch
 
         
         # Printer Power
