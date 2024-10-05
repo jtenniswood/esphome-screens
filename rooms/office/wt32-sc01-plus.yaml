@@ -50,9 +50,10 @@ ha_deck:
           icon: 󰇅
           toggle: true
           enabled: return true;
-          checked: |-
-            return id(office_lenovo_power_state).state;
-          on_turn_on:
+#          checked: |-
+#            return id(office_lenovo_power_state).state;
+#          on_turn_on:
+          on_click:
             - http_request.get:
                 url: http://192.168.10.76:9000/hooks/webhook
 #            - homeassistant.service:
