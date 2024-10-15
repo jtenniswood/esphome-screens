@@ -39,7 +39,7 @@ ha_deck:
         id(device).set_brightness(id(screen_brightness).state);
       }
 
-output:
-  - platform: ledc
-    pin: 10
-    id: out_10
+#output:
+#  - platform: ledc
+#    pin: 10
+#    id: out_10
