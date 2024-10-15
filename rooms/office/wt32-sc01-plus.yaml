@@ -51,9 +51,9 @@ ha_deck:
           icon: 󰇅
           toggle: true
           enabled: return true;
-          on_click:
-            lambda: |-
-              id(my_http_component).make_request();
+#          on_click:
+#            lambda: |-
+#              id(my_http_component).make_request();
           checked: |-
             return id(office_lenovo_power_state).state;
           on_turn_on:
